@@ -32,7 +32,7 @@ This is a StateGo JavaScript sample.
 ![](./wiki/MoveLogicControl.png)
 
 # TitleControl
-![](./wiki/TitleLogicControl.png)
+![](./wiki/TitleControl.png)
 
 
 
