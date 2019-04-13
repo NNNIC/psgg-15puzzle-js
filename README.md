@@ -16,7 +16,7 @@ This is a [StateGo](https://statego.programanic.com/index-e.html) JavaScript sam
 ![](./wiki/MainControl.png)
 
 ## FEControl
-![](./wiki/FEControl.png)
+![](./wiki/FControl.png)
 
 ## KeyControl
 ![](./wiki/KeyControl.png)
