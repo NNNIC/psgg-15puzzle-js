@@ -1,6 +1,9 @@
 # psgg-javascript-15puzzle
 This is a StateGo JavaScript sample.
 
+[play](https://statego.programanic.com/sample/15puzzle/threejs-try.html)
+
+
 # MainControl
 ![](./wiki/MainControl.png)
 
