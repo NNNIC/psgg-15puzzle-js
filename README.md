@@ -1,2 +1,2 @@
 # psgg-javascript-15puzzle
-This is StateGo JavaScript sample.
+This is a StateGo JavaScript sample.
