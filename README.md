@@ -3,6 +3,8 @@ This is a StateGo JavaScript sample.
 
 [play](https://statego.programanic.com/sample/15puzzle/threejs-try.html)
 
+![](./wiki/15full.png)
+
 # Libiraries
 
 + jquery
