@@ -3,42 +3,43 @@ This is a StateGo JavaScript sample.
 
 [play](https://statego.programanic.com/sample/15puzzle/threejs-try.html)
 
+# Libiraries
 
-# MainControl
++ jquery
++ threejs
+
+
+# StateGo Charts
+## MainControl
 ![](./wiki/MainControl.png)
 
-# FEControl
+## FEControl
 ![](./wiki/FEControl.png)
 
-# KeyControl
+## KeyControl
 ![](./wiki/KeyControl.png)
 
-# FadeControl
+## FadeControl
 ![](./wiki/FadeControl.png)
 
-# FadeTextControl
+## FadeTextControl
 ![](./wiki/FadeTextControl.png)
 
-# ResizeControl
+## ResizeControl
 ![](./wiki/ResizeControl.png)
 
-# CreatePanelsControl
+## CreatePanelsControl
 ![](./wiki/CreatePanelsControl.png)
 
-# MapControl
+## MapControl
 ![](./wiki/MapControl.png)
 
-# TouchControl
+## TouchControl
 ![](./wiki/TouchControl.png)
 
-# MoveLogicControl
+## MoveLogicControl
 ![](./wiki/MoveLogicControl.png)
 
-# TitleControl
+## TitleControl
 ![](./wiki/TitleControl.png)
-
-
-
-
-
 
