@@ -1,5 +1,5 @@
 # psgg-javascript-15puzzle
-This is a StateGo JavaScript sample.
+This is a [StateGo](https://statego.programanic.com/index-e.html) JavaScript sample.
 
 [play](https://statego.programanic.com/sample/15puzzle/threejs-try.html)
 
