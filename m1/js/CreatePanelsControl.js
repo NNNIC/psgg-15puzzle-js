@@ -159,7 +159,7 @@ CreatePanelsControl.prototype.S_CREATE_BACKBOARD = function (first) {
             new THREE.PlaneGeometry(512, 512),
             new THREE.MeshBasicMaterial({map: this.texture})  // {map: texture}がキモ
         );
-        this.box.position.set(0,0,-1);
+        this.box.position.set(0,0,-2);
         this.box.name = "backboard";
         G.scene.add(this.box);
     }

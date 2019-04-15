@@ -132,3 +132,14 @@ function show_mondai(n) {
 function zeroPadding(num,length){ //https://qiita.com/terrym/items/6257f6507ca19f00cdf3
     return ('0000000000' + num).slice(-length);
 }
+function is_smartphone() {
+    return false;
+    
+    var ua = navigator.userAgent;
+    if (ua.indexOf('iPhone') > 0)   return true;
+    if (ua.indexOf('iPad') > 0)     return true;    
+    if (ua.indexOf('iPod') > 0)     return true;
+    if (ua.indexOf('Android') > 0)  return true;
+    
+    return false;
+}

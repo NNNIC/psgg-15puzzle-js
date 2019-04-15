@@ -185,6 +185,7 @@ TouchControl.prototype.S_RAYCAST1 = function (first) {
     "use strict";
     if (first) {
         this.m_hitobj_name = null;
+        console.log("S_RAYCAST1");
     }
     // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
     G.raycaster.setFromCamera(G.mouse, G.camera);
@@ -195,6 +196,7 @@ TouchControl.prototype.S_RAYCAST1 = function (first) {
         this.m_hitobj_name = intersects[0].object.name;
         console.log("hit .. " + this.m_hitobj_name);
     }
+    //alert("!#"+  this.m_hitobj_name );
     if (this.m_hitobj_name !== null) { this.setnext( this.S_SAVE_POS ); }
     else { this.setnext( this.S_WAIT_MOUSE_UP ); }
     if (this.hasnext()) {
@@ -234,7 +236,7 @@ TouchControl.prototype.S_SAVE_POS = function (first) {
         this.m_savepos_x = G.mouse.x;
         this.m_savepos_y = G.mouse.y;
         console.log("S_SAVE_POS  ");
-        console.log(G.mouse);
+        //console.log(G.mouse);
     }
     this.m_xdiff = (G.mouse.x - this.m_savepos_x) * G.width;
     this.m_ydiff = (G.mouse.y - this.m_savepos_y) * G.height;

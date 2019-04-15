@@ -59,8 +59,14 @@
   <script src="js/TitleControl.js"></script>
     
   <script>
-    // ページの読み込みを待つ
+    // ページの読み込みを待つ      
     window.addEventListener('load', init);
+    
+    // 停止 https://tiltilmitil.co.jp/blog/891
+    var movefun = function( event ){
+	    event.preventDefault();
+    }  
+    window.addEventListener( 'touchmove' , movefun , { passive: false } );
 
     function init() {
       //    
@@ -197,7 +203,10 @@
       // マウスを動かしたときのイベント
       function handleMouseMove(event) {
           const element = event.currentTarget;
+          //console.log("--mouse move event--");
+          //console.log(event);
           // canvas要素上のXY座標
+          
           const x = event.clientX - element.offsetLeft;
           const y = event.clientY - element.offsetTop;
           // canvas要素の幅・高さ
@@ -208,8 +217,37 @@
           mouse.x = ( x / w ) * 2 - 1;
           mouse.y = -( y / h ) * 2 + 1;
           G.mouse = mouse;
+          console.log(event.clientX + "," + event.clientY +"/" + mouse.x +"," + mouse.y);
           //console.log(G.mouse);
       }
+      canvas.addEventListener('touchmove', handleTouchMove, {passive: false});    
+      // タッチを動かしたときのイベント
+      function handleTouchMove(event) {
+          event.preventDefault();
+          const element = event.currentTarget;
+          const et = event.changedTouches[0];
+          //console.log("element.offsetLeft="+element.offsetLeft);
+          //console.log("element.offsetTop="+element.offsetTop);
+          //console.log("element.offsetWidth="+element.offsetWidth);
+          //console.log("element.offsetHeight="+element.offsetHeight);
+          //console.log(et.pageX + "," + et.pageY);
+          // canvas要素上のXY座標
+          const x = et.pageX  - element.offsetLeft;
+          const y = et.pageY  - element.offsetTop;
+          // canvas要素の幅・高さ
+          const w = element.offsetWidth;
+          const h = element.offsetHeight;
+
+          // -1〜+1の範囲で現在のマウス座標を登録する
+          mouse.x = ( x / w ) * 2 - 1;
+          mouse.y = -( y / h ) * 2 + 1;
+          G.mouse = mouse;
+          //console.log(et.pageX + "," + et.pageY+"/"+mouse.x + "," + mouse.y);
+      }
+      canvas.addEventListener('touchstart', function(event){G.mouse_down=true; G.mouse_click=true;  handleTouchMove(event); });
+      canvas.addEventListener('touchend', function(){G.mouse_down=false;});
+        
+        
       G.raycaster = new THREE.Raycaster();
       //#endregion    
     
