@@ -1,7 +1,9 @@
 # psgg-javascript-15puzzle
-This is a StateGo JavaScript sample.
+This is a [StateGo](https://statego.programanic.com/index-e.html) JavaScript sample.
 
 [play](https://statego.programanic.com/sample/15puzzle/threejs-try.html)
+
+![](./wiki/15full.png)
 
 # Libiraries
 
@@ -14,7 +16,7 @@ This is a StateGo JavaScript sample.
 ![](./wiki/MainControl.png)
 
 ## FEControl
-![](./wiki/FEControl.png)
+![](./wiki/FeControl.png)
 
 ## KeyControl
 ![](./wiki/KeyControl.png)
