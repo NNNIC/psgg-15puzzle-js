@@ -23,7 +23,8 @@ var MainControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from MainControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MainControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]

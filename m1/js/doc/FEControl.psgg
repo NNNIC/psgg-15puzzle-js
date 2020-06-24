@@ -68,6 +68,7 @@ s0011=E_SHOW_NEXT
 
 [s0001]
 n002=S_START
+n004=MainControl
 n006=S_LOAD_TEXTURE
 n019=@@@
 /
@@ -460,7 +461,7 @@ n01b=100033
 sheet=config
 
 ###VARIOUS-CONTENTS-BEGIN###
-; The setting was created automatically. 2020/06/24 22:39:26
+; The setting was created automatically. 2020/06/25 8:17:56
 ; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
 psggfile=@@@
 FEControl.psgg
@@ -478,7 +479,7 @@ c_thumbnail=1
 c_contents=1
 force_display_outpin=0
 last_action=@@@
-init,Initilized
+varied,Edited a state.
 @@@
 target_pathdir=@@@
 /

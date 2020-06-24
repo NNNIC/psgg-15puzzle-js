@@ -69,6 +69,7 @@ s0013=S_CREATE_TOUCHCOL
 
 [s0001]
 n002=S_START
+n004=MainControl
 n006=S_WAIT_REQ1
 n018=@@@
 /
@@ -479,7 +480,7 @@ n01a=100020
 sheet=config
 
 ###VARIOUS-CONTENTS-BEGIN###
-; The setting was created automatically. 2020/06/24 22:34:04
+; The setting was created automatically. 2020/06/25 8:14:31
 ; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
 psggfile=@@@
 CreatePanelsControl.psgg
@@ -497,7 +498,7 @@ c_thumbnail=1
 c_contents=1
 force_display_outpin=0
 last_action=@@@
-init,Initilized
+varied,Edited a state.
 @@@
 target_pathdir=@@@
 /

@@ -27,7 +27,8 @@ var TouchControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from TouchControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\TouchControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]

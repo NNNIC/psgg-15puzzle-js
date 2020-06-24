@@ -131,7 +131,7 @@ n01b=100005
 [s0005]
 n001=(bitmap)
 n002=S_CREATE_PANELS
-n004=CreatePanelsControl.psgg
+n004=CreatePanelsControl
 n006=S_REMOVE_16
 n00a=this.m_b[[state]] = false;
 n00c=@@@
@@ -187,7 +187,7 @@ n01b=100008
 [s0008]
 n001=(bitmap)
 n002=S_GET_TOUCH
-n004=TouchControl.psgg
+n004=TouchControl
 n006=S_GET_TOUCH_RESULT
 n00a=this.m_[[state]]_done = false;
 n00c=@@@
@@ -358,7 +358,7 @@ n01b=100019
 [s0011]
 n001=(bitmap)
 n002=S_SHOW_NEXT
-n004=FEControl.psgg
+n004=FEControl
 n006=S_FADE_OUT
 n00b=
 n00c=@@@
@@ -456,7 +456,7 @@ n01b=100024
 [s0016]
 n001=(bitmap)
 n002=S_HIDE_NEXT
-n004=FEControl.psgg
+n004=FEControl
 n006=S_SET_MONDAL_PANEL1
 n00c=G.fe_control.show_next(false);
 n011=this.b[[state]] === false
@@ -505,7 +505,7 @@ n01b=100026
 sheet=config
 
 ###VARIOUS-CONTENTS-BEGIN###
-; The setting was created automatically. 2020/06/24 22:40:43
+; The setting was created automatically. 2020/06/25 8:14:36
 ; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
 psggfile=@@@
 MainControl.psgg
@@ -523,7 +523,7 @@ c_thumbnail=1
 c_contents=1
 force_display_outpin=0
 last_action=@@@
-init,Initilized
+init,Saved
 @@@
 target_pathdir=@@@
 /
