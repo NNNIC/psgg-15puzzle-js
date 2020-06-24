@@ -8,11 +8,11 @@ var FadeTextControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from FadeTextControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\FadeTextControl.psgg
+
     this.FT = 1; //フェード経過秒
     this.m_reqcb = null;
     this.m_in_or_out = false;
-
     this.opacity = 1;
 
 
@@ -22,7 +22,8 @@ var FadeTextControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from FadeTextControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\FadeTextControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]
@@ -101,7 +102,8 @@ FadeTextControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from FadeTextControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\FadeTextControl.psgg
+
 /*
     S_CB
 */

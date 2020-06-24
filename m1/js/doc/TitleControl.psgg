@@ -1,3 +1,804 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=TitleControl.xlsx
+guid=8302f360-b61e-4857-a1e2-a89aa9c362ab
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,n006,,n007,n008,n009,n00a,,n00b,n00c,n00d,n00e,n00f,,n010,n011,,n012,n013,,n014,n015,,n016,n017,n018,n019,,n01a,n01b,n01c
+stateid_list=,,,,s0001,s0002,s0003,s0004,s0005,s0006,s0007,s0008,,s0009,,,,s000a,,,,,
+max_name_id=28
+max_state_id=10
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=basestate
+n006=nextstate
+n007=pos
+n008=rot
+n009=data
+n00a=embed
+n00b=members
+n00c=vars
+n00d=init
+n00e=init-cmt
+n00f=init-ref
+n010=update
+n011=update-cmt
+n012=wait
+n013=wait-cmt
+n014=post_wait
+n015=post_wait-cmt
+n016=branch
+n017=branch-cmt
+n018=brcond
+n019=nowait
+n01a=!dir
+n01b=!pos
+n01c=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_CREATE_WIN
+s0004=S_INIT
+s0005=S_CREATE_YOU
+s0006=S_HIDE
+s0007=S_LOADFONT
+s0008=E_0001
+s0009=S_WAIT_REQ
+s000a=S_WAIT_REQ1
+
+
+[s0001]
+n002=S_START
+n006=S_INIT
+n01a=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01b=22,15
+n01c=100001
+
+[s0002]
+n001=(bitmap)
+n002=S_END
+n00d=console.log("END");
+n01a=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01b=1061,117
+n01c=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_CREATE_WIN
+n006=S_HIDE
+n007=100,-200,-1200
+n008=-70
+n00b=this.m_win = null;
+n00d=@@@
+//正面マテリアルの生成
+ var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+
+//側面マテリアルの生成
+ var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+ var materialArray = [ materialFront, materialSide ];
+
+//テキスト
+ var textGeom = new THREE.TextGeometry( "WIN",
+        {
+                size: 500, height: 80, curveSegments: 3,
+                font: this.font,
+                bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+                material: 0, extrudeMaterial: 1
+        });
+
+var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+var textMesh = new THREE.Mesh(textGeom, textMaterial );
+textMesh.position.set([[pos]]);
+textMesh.rotation.y = [[rot]] * (Math.PI / 180);
+
+//シーンオブジェクトに追加
+this.scene.add(textMesh);
+
+this.m_win = textMesh;
+@@@
+
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=506,354
+n01c=100020
+
+[s0004]
+n001=(bitmap)
+n002=S_INIT
+n006=S_LOADFONT
+n00d=@@@
+this.camera = G.title_camera;
+this.scene   = G.title_scene;
+@@@
+
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=118,185
+n01c=100016
+
+[s0005]
+n001=(bitmap)
+n002=S_CREATE_YOU
+n006=S_CREATE_WIN
+n007=-600,-200,0
+n008=70
+n00b=this.m_you = null;
+n00d=@@@
+//正面マテリアルの生成
+ var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+
+//側面マテリアルの生成
+ var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+ var materialArray = [ materialFront, materialSide ];
+
+//テキスト
+ var textGeom = new THREE.TextGeometry( "YOU",
+        {
+                size: 500, height: 80, curveSegments: 3,
+                font: this.font,
+                bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+                material: 0, extrudeMaterial: 1
+        });
+
+var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+var textMesh = new THREE.Mesh(textGeom, textMaterial );
+textMesh.position.set([[pos]]);
+textMesh.rotation.y = [[rot]] * (Math.PI / 180);
+
+//シーンオブジェクトに追加
+this.scene.add(textMesh);
+
+this.m_you = textMesh;
+@@@
+
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=297,353
+n01c=100017
+
+[s0006]
+n001=(bitmap)
+n002=S_HIDE
+n006=S_END
+n00d=@@@
+this.m_you.visible = false;
+this.m_win.visible = false;
+@@@
+
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=736,351
+n01c=100021
+
+[s0007]
+n001=(bitmap)
+n002=S_LOADFONT
+n004=@@@
+https://stackoverflow.com/questions/36676274/how-to-load-a-font-and-render-it-with-textgeometry
+@@@
+
+n006=S_CREATE_YOU
+n00d=@@@
+var loader = new THREE.FontLoader();
+this.bDone=false;
+loader.load( 'fonts/helvetiker_bold.typeface.json', function ( font ) {
+    G.title_control.bDone = true;
+    G.title_control.font = font;
+});
+@@@
+
+n012=this.bDone == false
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=88,352
+n01c=100019
+
+[s0008]
+n001=(bitmap)
+n002=E_0001
+n00a=@@@
+TitleControl.prototype.show_youwin = function (b) {
+    this.m_you.visible = b;
+    this.m_win.visible = b;
+};
+
+@@@
+
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=99,653
+n01c=100022
+
+[s0009]
+n001=(bitmap)
+n002=S_WAIT_REQ
+n006=S_VAR_TOUCHTEX
+n012=this.m_reqcb==null
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=624,86
+n01c=100011
+
+[s000a]
+n001=(bitmap)
+n002=S_WAIT_REQ1
+n006=S_WAIT_REQ
+n00b=this.m_reqcb = null;
+n00d=this.m_reqcb = null;
+n01a=@@@
+/
+(100,100)
+
+@@@
+
+n01b=412,88
+n01c=100014
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/06/24 22:44:07
+; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
+psggfile=@@@
+TitleControl.psgg
+@@@
+xlsfile=@@@
+TitleControl.xlsx
+@@@
+guid=@@@
+8302f360-b61e-4857-a1e2-a89aa9c362ab
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+init,Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":"This is the root"}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":100,"y":100}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":22,"y":15}},{"Key":"S_END","Value":{"x":1061,"y":117}},{"Key":"S_WAIT_REQ","Value":{"x":624,"y":86}},{"Key":"S_WAIT_REQ1","Value":{"x":412,"y":88}},{"Key":"S_INIT","Value":{"x":118,"y":185}},{"Key":"S_LOADFONT","Value":{"x":88,"y":352}},{"Key":"S_CREATE_YOU","Value":{"x":297,"y":353}},{"Key":"S_CREATE_WIN","Value":{"x":506,"y":354}},{"Key":"S_HIDE","Value":{"x":736,"y":351}},{"Key":"E_0001","Value":{"x":99,"y":653}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=0
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_use_custom_prefix=0
+option_omit_basestate_string=0
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+TitleControl.prototype.[[state]] = function (first) {
+    "use strict";
+    [[vars]]
+
+    <<<?init
+    if (first) {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) { return; }
+    >>>
+
+    [[post_wait]]
+
+    [[branch]]
+
+    <<<?nextstate
+    if (!this.hasnext()) {
+        this.setnext(this.[[nextstate]]);
+    }
+    >>>
+
+
+    if (this.hasnext()) {
+        <<<?nowait
+        this.setnowait();
+        >>>
+        this.gonext();
+    }
+};
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=TitleControl.psgg
+xls=TitleControl.xlsx
+gen_src=TitleControl.js
+
+
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+
+
+
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+@@@
+
+
+
+
+
+
+
+
+lang=javascript
+framework=html5
+
+statemachie=TitleControl
+
+prefix=TitleControl
+xlsdir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+@@@
+
+
+
+
+
+
+gendir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+@@@
+
+
+
+
+
+
+genrdir=..
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+; This section has macro defines for converting.
+
+; commentline format  {%0} will be replaced to a comment.
+
+
+
+
+
+[macro]
+
+commentline=// {%0}
+
+@branch=@@@
+<<<?"{%0}"/^brifc{0,1}$/
+if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelseifc{0,1}$/
+else if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelse$/
+else { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^br_/
+this.{%0}( this.{%1} );
+>>>
+@@@
+
+
+
+
+
+#mems=[[members]]
+
+
+
+
+
+
+
+
+[jpn]
+
+title=Javascript スタートキット 2018/9/29
+
+detail=@@@
+※サンプルプロジェクトを次のＵＲＬより入手可能。
+https://github.com/NNNIC/psgg-javascript-sample
+
+Javascript用のステートマシンを作成します。
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  以下のファイルを作成します。
+
+      TitleControl.pssg     --- エディタで次のエクセルファイルを開く。
+      TitleControl.xlsx     ---  ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　以下のファイルを作成します。
+
+      TitleControl.js       --- Excelファイルからの変換ソースコードを挿入。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+
+@@@
+
+
+
+
+
+
+
+
+
+
+
+
+[en]
+
+title=Javascript STARTER KIT 2018/9/29
+
+detail=@@@
+This dialog will create files for a state machine.
+
+* You may get the sample project from the below url.
+https://github.com/NNNIC/psgg-javascript-sample
+
+# Document Folder
+      This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  File:
+
+      TitleControl.pssg  --- The editor opens the below excel file.
+      TitleControl.xlsx  --- Excel File. the editor edits this file
+
+# Source Folder
+       This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　File:
+
+      TitleControl.js       -- The editor will convert from the excel file into this file.
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+[thumbnail]
+
+jpn=説明用のイメージを指定する。
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[branch]
+
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[pos]
+
+jpn=位置
+[state]
+
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[nextstate]
+
+jpn=次に実行するステートを指定する。
+en=Specify the next state to be executed.
+[init]
+
+jpn=初期化用処理を指定する。
+en=Specify a initial process.
+[wait]
+
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[nowait]
+
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[post_wait]
+
+jpn='wait'後の処理を指定する。
+en=Specify the post process after 'wait'.
+[!uuid]
+
+jpn=システムがステートのuuid指定に使用。
+en=@@@
+System uses this for the uuid of the state.
+@@@
+
+[!dir]
+
+jpn=システムがステートのディレクトリ指定に使用。
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[update]
+
+jpn=更新処理を指定する。
+en=Specify a update process.
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+init=
+branch-cmt=
+state-ref=
+wait=
+embed=
+pos=
+data=
+post_wait-cmt=
+branch=
+!dir=
+wait-cmt=
+nowait=
+members=
+thumbnail=
+update-cmt=
+post_wait=
+state-cmt=
+!pos=
+!uuid=
+rot=
+nextstate=
+state=
+S_=
+brcond=
+update=
+init-cmt=
+basestate=
+vars=
+C_=
+E_=
+init-ref=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+thumbnail=read_only,share,S.+
+gosubstate=read_only,exclusion,S0
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,exclusion,(S0)
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

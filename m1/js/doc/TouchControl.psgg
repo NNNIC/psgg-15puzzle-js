@@ -1,3 +1,938 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=TouchControl.xlsx
+guid=a660a018-d119-4970-98d2-ab2e10a7b970
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,n006,,n007,,n008,n009,n00a,n00b,n00c,n00d,n00e,,n00f,n010,,n011,n012,,n013,n014,,n015,n016,n017,n018,,n019,n01a,n01b
+stateid_list=,,,,s0001,s0002,s0003,s0004,s0005,s0006,s0007,s0008,s0009,s000a,s000b,s000c,s000d,s000e,s000f,s0010,s0011
+max_name_id=27
+max_state_id=17
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=basestate
+n006=nextstate
+n007=embed
+n008=data
+n009=data-cmt
+n00a=members
+n00b=vars
+n00c=init
+n00d=init-cmt
+n00e=init-ref
+n00f=update
+n010=update-cmt
+n011=wait
+n012=wait-cmt
+n013=post_wait
+n014=post_wait-cmt
+n015=branch
+n016=branch-cmt
+n017=brcond
+n018=nowait
+n019=!dir
+n01a=!pos
+n01b=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_RAYCAST
+s0004=S_WAIT
+s0005=S_CHECK_MDOWN
+s0006=S_SAVE_POS
+s0007=S_REQCB
+s0008=S_WAIT_MOUSE_UP
+s0009=S_SET_DOWN
+s000a=S_SET_UP
+s000b=S_SET_RIGHT
+s000c=S_SET_LEFT
+s000d=S_RAYCAST1
+s000e=S_WAIT_REQCB
+s000f=S_WAIT_MOUSE_UP1
+s0010=S_IS_CLICK
+s0011=C_0003
+
+
+[s0001]
+n002=S_START
+n006=S_WAIT
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=45,26
+n01b=100001
+
+[s0002]
+n002=S_END
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=1974,69
+n01b=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_RAYCAST
+n004=@@@
+https://ics.media/tutorial-three/raycast/
+@@@
+
+n006=S_IS_CLICK
+n00f=@@@
+// レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
+G.raycaster.setFromCamera(G.mouse, G.camera);
+
+// その光線とぶつかったオブジェクトを得る
+const intersects = G.raycaster.intersectObjects(G.scene.children);
+
+//if (intersects.length > 0){
+//    // ぶつかったオブジェクトに対してなんかする
+//   console.log("hit");
+//}
+//if (G.mouse_click) console.log("clicked!!");
+
+@@@
+
+n011=@@@
+!(intersects.length > 0 && G.mouse_click)
+@@@
+
+n013=@@@
+var name = intersects[0].object.name;
+console.log("Clicked Obj = " + name );
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1742,58
+n01b=100006
+
+[s0004]
+n001=(bitmap)
+n002=S_WAIT
+n006=S_WAIT_REQCB
+n00a=this.m_limit_[[state]] = 0;
+n00c=@@@
+this.m_limit_[[state]] = Date.now() + 1000;
+@@@
+
+n011=this.m_limit_[[state]] > Date.now()
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=284,25
+n01b=100005
+
+[s0005]
+n001=(bitmap)
+n002=S_CHECK_MDOWN
+n003=マウスダウン
+n006=S_RAYCAST1
+n00c=console.log("[[state]]");
+n011=G.mouse_down === false
+n018=nowait
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1149,37
+n01b=100008
+
+[s0006]
+n001=(bitmap)
+n002=S_SAVE_POS
+n003=開始位置保存&閾値移動
+n00a=@@@
+this.m_savepos_x = 0;
+this.m_savepos_y = 0;
+this.m_xdiff = 0;
+this.m_ydiff = 0;
+this.TH=100;
+@@@
+
+n00c=@@@
+this.m_savepos_x = G.mouse.x;
+this.m_savepos_y = G.mouse.y;
+
+console.log("[[state]]  ");
+//console.log(G.mouse);
+
+@@@
+
+n00f=@@@
+this.m_xdiff = (G.mouse.x - this.m_savepos_x) * G.width;
+this.m_ydiff = (G.mouse.y - this.m_savepos_y) * G.height;
+var xdiff_a = Math.abs(this.m_xdiff);
+var ydiff_a = Math.abs(this.m_ydiff);
+
+@@@
+
+n015=@@@
+brifc(S_CHECK_MDOWN);
+brelseifc(S_SET_UP);
+brelseifc(S_SET_RIGHT);
+brelseifc(S_SET_DOWN);
+brelseif(S_SET_LEFT);
+@@@
+
+n016=@@@
+マウス外れた
+上
+右
+下
+左
+@@@
+
+n017=@@@
+G.mouse_down === false
+ydiff_a > this.TH && this.m_ydiff > 0
+xdiff_a > this.TH && this.m_xdiff > 0
+ydiff_a > this.TH && this.m_ydiff < 0
+xdiff_a > this.TH && this.m_xdiff < 0
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=275,536
+n01b=100009
+
+[s0007]
+n001=(bitmap)
+n002=S_REQCB
+n004=MainControl.psgg
+n006=S_WAIT_REQCB
+n00c=@@@
+this.m_reqcb();
+this.m_reqcb = null;
+
+var s = "";
+if (this.m_dir == 1) s = "UP";
+else if (this.m_dir == 2) s = "RIGHT";
+else if (this.m_dir == 3) s = "DOWN";
+else s = "LEFT";
+
+console.log(  s + " MOVED! ");
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=872,611
+n01b=100010
+
+[s0008]
+n001=(bitmap)
+n002=S_WAIT_MOUSE_UP
+n003=念のためMOUSE UPまで待つ
+n006=S_CHECK_MDOWN
+n011=G.mouse_down === true
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1103,931
+n01b=100011
+
+[s0009]
+n001=(bitmap)
+n002=S_SET_DOWN
+n006=S_REQCB
+n00c=this.m_dir = 3;
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=631,774
+n01b=100015
+
+[s000a]
+n001=(bitmap)
+n002=S_SET_UP
+n006=S_REQCB
+n00a=@@@
+this.m_dir = 0; //0:none 1:up 2:right 3:down 4:left
+@@@
+
+n00c=this.m_dir = 1;
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=633,516
+n01b=100013
+
+[s000b]
+n001=(bitmap)
+n002=S_SET_RIGHT
+n006=S_REQCB
+n00c=this.m_dir = 2;
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=637,653
+n01b=100014
+
+[s000c]
+n001=(bitmap)
+n002=S_SET_LEFT
+n006=S_REQCB
+n00c=this.m_dir = 4;
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=610,894
+n01b=100016
+
+[s000d]
+n001=(bitmap)
+n002=S_RAYCAST1
+n004=@@@
+https://ics.media/tutorial-three/raycast/
+@@@
+
+n00a=this.m_hitobj_name = null;
+n00c=@@@
+this.m_hitobj_name = null;
+console.log("[[state]]");
+@@@
+
+n00f=@@@
+// レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
+G.raycaster.setFromCamera(G.mouse, G.camera);
+
+// その光線とぶつかったオブジェクトを得る
+const intersects = G.raycaster.intersectObjects(G.scene.children);
+
+if (intersects.length > 0){
+    // ぶつかったオブジェクトに対してなんかする
+    this.m_hitobj_name = intersects[0].object.name;
+    console.log("hit .. " + this.m_hitobj_name);
+}
+
+@@@
+
+n013=//alert("!#"+  this.m_hitobj_name );
+n015=@@@
+brifc(S_SAVE_POS);
+brelse(S_WAIT_MOUSE_UP);
+@@@
+
+n016=@@@
+?
+?
+@@@
+
+n017=@@@
+this.m_hitobj_name !== null
+?
+@@@
+
+n018=nowait
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=41,710
+n01b=100017
+
+[s000e]
+n001=(bitmap)
+n002=S_WAIT_REQCB
+n006=S_WAIT_MOUSE_UP1
+n00a=this.m_reqcb = null;
+n011=this.m_reqcb === null
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=557,32
+n01b=100018
+
+[s000f]
+n001=(bitmap)
+n002=S_WAIT_MOUSE_UP1
+n003=念のためMOUSE UPまで待つ
+n006=S_CHECK_MDOWN
+n011=G.mouse_down === true
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=785,20
+n01b=100019
+
+[s0010]
+n001=(bitmap)
+n002=S_IS_CLICK
+n006=S_RAYCAST
+n011=G.mouse_click===false
+n018=nowait
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1518,114
+n01b=100007
+
+[s0011]
+n001=(bitmap)
+n002=C_0003
+n003=@@@
+コールバック時、以下が決定
+m_hitobj_name
+m_dir
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=186,371
+n01b=100020
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/06/24 22:45:42
+; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
+psggfile=@@@
+TouchControl.psgg
+@@@
+xlsfile=@@@
+TouchControl.xlsx
+@@@
+guid=@@@
+a660a018-d119-4970-98d2-ab2e10a7b970
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+init,Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":"This is the root"}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":100,"y":100}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":45,"y":26}},{"Key":"S_END","Value":{"x":1974,"y":69}},{"Key":"S_WAIT","Value":{"x":284,"y":25}},{"Key":"S_RAYCAST","Value":{"x":1742,"y":58}},{"Key":"S_IS_CLICK","Value":{"x":1518,"y":114}},{"Key":"S_RAYCAST1","Value":{"x":41,"y":710}},{"Key":"S_CHECK_MDOWN","Value":{"x":1149,"y":37}},{"Key":"S_SAVE_POS","Value":{"x":275,"y":536}},{"Key":"S_WAIT_MOUSE_UP","Value":{"x":1103,"y":931}},{"Key":"S_SET_UP","Value":{"x":633,"y":516}},{"Key":"S_SET_RIGHT","Value":{"x":637,"y":653}},{"Key":"S_SET_DOWN","Value":{"x":631,"y":774}},{"Key":"S_SET_LEFT","Value":{"x":610,"y":894}},{"Key":"S_WAIT_REQCB","Value":{"x":557,"y":32}},{"Key":"S_REQCB","Value":{"x":872,"y":611}},{"Key":"S_WAIT_MOUSE_UP1","Value":{"x":785,"y":20}},{"Key":"C_0003","Value":{"x":186,"y":371}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=0
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_use_custom_prefix=0
+option_omit_basestate_string=0
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+TouchControl.prototype.[[state]] = function (first) {
+    "use strict";
+    [[vars]]
+
+    <<<?init
+    if (first) {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) { return; }
+    >>>
+
+    [[post_wait]]
+
+    [[branch]]
+
+    <<<?nextstate
+    if (!this.hasnext()) {
+        this.setnext(this.[[nextstate]]);
+    }
+    >>>
+
+
+    if (this.hasnext()) {
+        <<<?nowait
+        this.setnowait();
+        >>>
+        this.gonext();
+    }
+};
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=TouchControl.psgg
+xls=TouchControl.xlsx
+gen_src=TouchControl.js
+
+
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+@@@
+
+
+
+
+lang=javascript
+framework=html5
+
+statemachie=TouchControl
+
+prefix=TouchControl
+xlsdir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+@@@
+
+
+gendir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+@@@
+
+
+genrdir=..
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+; This section has macro defines for converting.
+
+; commentline format  {%0} will be replaced to a comment.
+
+[macro]
+
+commentline=// {%0}
+
+@branch=@@@
+<<<?"{%0}"/^brifc{0,1}$/
+if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelseifc{0,1}$/
+else if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelse$/
+else { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^br_/
+this.{%0}( this.{%1} );
+>>>
+@@@
+
+
+
+
+[jpn]
+
+title=Javascript スタートキット 2018/9/29
+
+detail=@@@
+※サンプルプロジェクトを次のＵＲＬより入手可能。
+https://github.com/NNNIC/psgg-javascript-sample
+
+Javascript用のステートマシンを作成します。
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  以下のファイルを作成します。
+
+      TouchControl.pssg     --- エディタで次のエクセルファイルを開く。
+      TouchControl.xlsx     ---  ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　以下のファイルを作成します。
+
+      TouchControl.js       --- Excelファイルからの変換ソースコードを挿入。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+
+@@@
+
+
+
+
+[en]
+
+title=Javascript STARTER KIT 2018/9/29
+
+detail=@@@
+This dialog will create files for a state machine.
+
+* You may get the sample project from the below url.
+https://github.com/NNNIC/psgg-javascript-sample
+
+# Document Folder
+      This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  File:
+
+      TouchControl.pssg  --- The editor opens the below excel file.
+      TouchControl.xlsx  --- Excel File. the editor edits this file
+
+# Source Folder
+       This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　File:
+
+      TouchControl.js       -- The editor will convert from the excel file into this file.
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+; -----
+; 項目説明
+; -----
+
+[state]
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[thumbnail]
+jpn=@@@
+説明用のイメージを指定する。
+@@@
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[init]
+jpn=@@@
+初期化用処理を指定する。
+@@@
+en=@@@
+Specify a initial process.
+@@@
+
+[update]
+jpn=@@@
+更新処理を指定する。
+@@@
+en=@@@
+Specify a update process.
+@@@
+
+[wait]
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[post_wait]
+jpn=@@@
+'wait'後の処理を指定する。
+@@@
+en=@@@
+Specify the post process after 'wait'.
+@@@
+
+[branch]
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[nextstate]
+jpn=@@@
+次に実行するステートを指定する。
+@@@
+en=@@@
+Specify the next state to be executed.
+@@@
+
+[nowait]
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[!dir]
+jpn=@@@
+システムがステートのディレクトリ指定に使用。
+@@@
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[!uuid]
+jpn=@@@
+システムがステートのuuid指定に使用。
+@@@
+en=@@@
+System uses this for the uuid of the state.
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+init=
+branch-cmt=
+state-ref=
+wait=
+wait-cmt=
+embed=
+data=
+branch=
+!dir=
+post_wait-cmt=
+nowait=
+members=
+thumbnail=
+update-cmt=
+post_wait=
+state-cmt=
+!pos=
+!uuid=
+nextstate=
+state=
+S_=
+data-cmt=
+brcond=
+update=
+init-cmt=
+basestate=
+vars=
+C_=
+E_=
+init-ref=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+thumbnail=read_only,share,S.+
+gosubstate=read_only,exclusion,S0
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,exclusion,(S0)
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

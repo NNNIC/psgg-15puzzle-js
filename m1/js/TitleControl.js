@@ -8,15 +8,10 @@ var TitleControl = function () {
     this.nowait    = false;
     
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from TitleControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\TitleControl.psgg
+
     this.m_win = null;
     this.m_you = null;
-
-
-
-
-
-
     this.m_reqcb = null;
 
 
@@ -129,7 +124,8 @@ TitleControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from TitleControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\TitleControl.psgg
+
 /*
     S_CREATE_WIN
 */

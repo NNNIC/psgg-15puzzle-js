@@ -8,7 +8,8 @@ var MapControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from MapControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\MapControl.psgg
+
 
 
     // [SYN-G-GEN OUTPUT END]
@@ -17,7 +18,8 @@ var MapControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from MapControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MapControl.psgg
+
 /*
     E_REMOVE_PANEL16
     P16パネルを除外
@@ -141,7 +143,8 @@ MapControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from MapControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MapControl.psgg
+
 /*
     S_CHECK_VALUES1
 */

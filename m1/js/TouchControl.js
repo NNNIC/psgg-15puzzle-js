@@ -8,22 +8,16 @@ var TouchControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from TouchControl.xlsx. 
-    this.m_hitobj_name = null;
+    //             psggConverterLib.dll converted from psgg-file:doc\TouchControl.psgg
 
+    this.m_hitobj_name = null;
     this.m_savepos_x = 0;
     this.m_savepos_y = 0;
     this.m_xdiff = 0;
     this.m_ydiff = 0;
     this.TH=100;
-
-
-
     this.m_dir = 0; //0:none 1:up 2:right 3:down 4:left
-
     this.m_limit_S_WAIT = 0;
-
-
     this.m_reqcb = null;
 
 
@@ -112,7 +106,8 @@ TouchControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from TouchControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\TouchControl.psgg
+
 /*
     S_CHECK_MDOWN
     マウスダウン

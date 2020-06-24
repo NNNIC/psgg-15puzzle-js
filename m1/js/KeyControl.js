@@ -8,7 +8,8 @@ var KeyControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from KeyControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\KeyControl.psgg
+
 
 
     // [SYN-G-GEN OUTPUT END]
@@ -17,7 +18,8 @@ var KeyControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from KeyControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\KeyControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]
@@ -96,7 +98,8 @@ KeyControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from KeyControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\KeyControl.psgg
+
 /*
     S_DEBUG_ON_OFF
 */

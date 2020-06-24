@@ -8,14 +8,13 @@ var FEControl = function () {
     this.nowait    = false;
     
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from FEControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\FEControl.psgg
+
     this.box = null;
     this.m_nextbutton = null;
     this.box = null;
     this.box = null;
-
     this.bDone = false;
-
     this.texture = null;
     this.texture = null;
     this.texture = null;
@@ -28,7 +27,8 @@ var FEControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from FEControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\FEControl.psgg
+
 /*
     E_SHOW_NEXT
 */
@@ -113,7 +113,8 @@ FEControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from FEControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\FEControl.psgg
+
 /*
     S_CREATE_BUTTON1
 */

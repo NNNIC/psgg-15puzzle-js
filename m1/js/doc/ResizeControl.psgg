@@ -1,3 +1,720 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=ResizeControl.xlsx
+guid=2e466ef9-91d7-48c9-82a4-b2fce91cbd0f
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,,n006,,n007,n008,n009,n00a,n00b,,n00c,n00d,,n00e,n00f,,n010,n011,,n012,n013,n014,n015,,n016,n017,n018
+stateid_list=,,,,s0001,s0002,s0003,s0004,s0005,s0006,s0007,,,,,s0008
+max_name_id=24
+max_state_id=8
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=nextstate
+n006=embed
+n007=members
+n008=vars
+n009=init
+n00a=init-cmt
+n00b=init-ref
+n00c=update
+n00d=update-cmt
+n00e=wait
+n00f=wait-cmt
+n010=post_wait
+n011=post_wait-cmt
+n012=branch
+n013=branch-cmt
+n014=brcond
+n015=nowait
+n016=!dir
+n017=!pos
+n018=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_INIT
+s0004=S_CHECK_WPH
+s0005=S_CHANGE_WIDTH
+s0006=S_CHANGE_HEIGHT
+s0007=S_CHANGE_STYLE
+s0008=E_DEFINES
+
+
+[s0001]
+n002=S_START
+n005=S_INIT
+n016=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n017=38,49
+n018=100001
+
+[s0002]
+n001=(bitmap)
+n002=S_END
+n009=console.log("END");
+n016=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n017=1144,419
+n018=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_INIT
+n005=S_CHECK_WPH
+n007=@@@
+this.witdh  = 960; //現在の幅　　入力
+this.height = 640; //現在の高さ　入力
+this.fixwidth= 960; //修正幅    出力
+this.fixheight=640; //修正高さ　出力
+@@@
+
+n009=@@@
+this.fixwidth = this.width;
+this.fixheight= this.height;
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=92,163
+n018=100004
+
+[s0004]
+n001=(bitmap)
+n002=S_CHECK_WPH
+n003=横縦比の確認
+n008=var cur_wph = this.width / this.height;
+n012=@@@
+brifc(S_CHANGE_WIDTH);
+brelse(S_CHANGE_HEIGHT);
+@@@
+
+n013=@@@
+横が大きい
+縦が大きい
+@@@
+
+n014=@@@
+cur_wph > ResizeControl.WPH
+?
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=83,519
+n018=100005
+
+[s0005]
+n001=(bitmap)
+n002=S_CHANGE_WIDTH
+n003=幅を修正する
+n005=S_CHANGE_STYLE
+n009=@@@
+this.fixwidth = this.height / ResizeControl.HEIGHT * ResizeControl.WIDTH;
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=379,361
+n018=100006
+
+[s0006]
+n001=(bitmap)
+n002=S_CHANGE_HEIGHT
+n003=高さを修正する
+n005=S_CHANGE_STYLE
+n009=@@@
+this.fixheight = this.width / ResizeControl.WIDTH * ResizeControl.HEIGHT;
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=381,596
+n018=100007
+
+[s0007]
+n001=(bitmap)
+n002=S_CHANGE_STYLE
+n005=S_END
+n009=@@@
+var s = Math.round(40 * this.fixwidth / 960);
+$('.msg').css('font-size', s.toString() + 'px');
+$('.msg').css('line-height', s.toString() + 'px');
+
+var t = Math.round(60 * this.fixwidth / 960);
+$('.msg').css('top', t.toString() + 'px');
+
+$('.msg').css('width', this.fixwidth.toString() + 'px');
+$('.msg').css('text-align', 'center');
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=782,412
+n018=100008
+
+[s0008]
+n001=(bitmap)
+n002=E_DEFINES
+n006=@@@
+ResizeControl.WIDTH =  960;
+ResizeControl.HEIGHT= 640;
+ResizeControl.WPH    = ResizeControl.WIDTH / ResizeControl.HEIGHT;
+@@@
+
+n016=@@@
+/
+(100,100)
+
+@@@
+
+n017=610,72
+n018=100003
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/06/24 22:43:39
+; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
+psggfile=@@@
+ResizeControl.psgg
+@@@
+xlsfile=@@@
+ResizeControl.xlsx
+@@@
+guid=@@@
+2e466ef9-91d7-48c9-82a4-b2fce91cbd0f
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+init,Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":"This is the root"}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":100,"y":100}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":38,"y":49}},{"Key":"S_END","Value":{"x":1144,"y":419}},{"Key":"E_DEFINES","Value":{"x":610,"y":72}},{"Key":"S_INIT","Value":{"x":92,"y":163}},{"Key":"S_CHECK_WPH","Value":{"x":83,"y":519}},{"Key":"S_CHANGE_WIDTH","Value":{"x":379,"y":361}},{"Key":"S_CHANGE_HEIGHT","Value":{"x":381,"y":596}},{"Key":"S_CHANGE_STYLE","Value":{"x":782,"y":412}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=0
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_use_custom_prefix=0
+option_omit_basestate_string=0
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+ResizeControl.prototype.[[state]] = function (first) {
+    "use strict";
+    [[vars]]
+
+    <<<?init
+    if (first) {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) { return; }
+    >>>
+
+    [[post_wait]]
+
+    [[branch]]
+
+    <<<?nextstate
+    if (!this.hasnext()) {
+        this.setnext(this.[[nextstate]]);
+    }
+    >>>
+
+    <<<?nowait
+    this.nowait();
+    >>>
+
+    if (this.hasnext()) {
+        this.gonext();
+    }
+};
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=ResizeControl.psgg
+xls=ResizeControl.xlsx
+gen_src=ResizeControl.js
+
+
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+@@@
+
+
+
+
+
+
+lang=javascript
+framework=html5
+
+statemachie=ResizeControl
+
+prefix=ResizeControl
+xlsdir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+@@@
+
+
+
+
+gendir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+@@@
+
+
+
+
+genrdir=..
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+; This section has macro defines for converting.
+
+; commentline format  {%0} will be replaced to a comment.
+
+
+
+[macro]
+
+commentline=// {%0}
+
+@branch=@@@
+<<<?"{%0}"/^brifc{0,1}$/
+if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelseifc{0,1}$/
+else if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelse$/
+else { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^br_/
+this.{%0}( this.{%1} );
+>>>
+@@@
+
+
+
+#mems=[[members]]
+
+
+
+
+
+
+[jpn]
+
+title=Javascript スタートキット 2018/9/29
+
+detail=@@@
+※サンプルプロジェクトを次のＵＲＬより入手可能。
+https://github.com/NNNIC/psgg-javascript-sample
+
+Javascript用のステートマシンを作成します。
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  以下のファイルを作成します。
+
+      ResizeControl.pssg     --- エディタで次のエクセルファイルを開く。
+      ResizeControl.xlsx     ---  ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　以下のファイルを作成します。
+
+      ResizeControl.js       --- Excelファイルからの変換ソースコードを挿入。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+
+@@@
+
+
+
+
+
+
+
+
+[en]
+
+title=Javascript STARTER KIT 2018/9/29
+
+detail=@@@
+This dialog will create files for a state machine.
+
+* You may get the sample project from the below url.
+https://github.com/NNNIC/psgg-javascript-sample
+
+# Document Folder
+      This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  File:
+
+      ResizeControl.pssg  --- The editor opens the below excel file.
+      ResizeControl.xlsx  --- Excel File. the editor edits this file
+
+# Source Folder
+       This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　File:
+
+      ResizeControl.js       -- The editor will convert from the excel file into this file.
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+; -----
+; 項目説明
+; -----
+
+[state]
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[thumbnail]
+jpn=@@@
+説明用のイメージを指定する。
+@@@
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[init]
+jpn=@@@
+初期化用処理を指定する。
+@@@
+en=@@@
+Specify a initial process.
+@@@
+
+[update]
+jpn=@@@
+更新処理を指定する。
+@@@
+en=@@@
+Specify a update process.
+@@@
+
+[wait]
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[post_wait]
+jpn=@@@
+'wait'後の処理を指定する。
+@@@
+en=@@@
+Specify the post process after 'wait'.
+@@@
+
+[branch]
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[nextstate]
+jpn=@@@
+次に実行するステートを指定する。
+@@@
+en=@@@
+Specify the next state to be executed.
+@@@
+
+[nowait]
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[!dir]
+jpn=@@@
+システムがステートのディレクトリ指定に使用。
+@@@
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[!uuid]
+jpn=@@@
+システムがステートのuuid指定に使用。
+@@@
+en=@@@
+System uses this for the uuid of the state.
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+init=
+branch-cmt=
+state-ref=
+wait=
+wait-cmt=
+embed=
+branch=
+!dir=
+post_wait-cmt=
+nowait=
+members=
+thumbnail=
+update-cmt=
+post_wait=
+state-cmt=
+!pos=
+!uuid=
+nextstate=
+state=
+S_=
+brcond=
+update=
+init-cmt=
+vars=
+C_=
+E_=
+init-ref=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+thumbnail=read_only,share,S.+
+gosubstate=read_only,exclusion,S0
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,share,S.+
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

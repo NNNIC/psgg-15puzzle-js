@@ -8,13 +8,13 @@ var MoveLogicControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from MoveLogicControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\MoveLogicControl.psgg
+
     this.m_hitmap = null;
     this.m_aclist = [];
     this.m_nextmap = null;
     this.m_dirstr = null;
     this.m_ok2move = false;
-
     this.m_hitobj_name = null;
     this.m_dir = 0;
 
@@ -25,7 +25,8 @@ var MoveLogicControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from MoveLogicControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MoveLogicControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]
@@ -110,7 +111,8 @@ MoveLogicControl.prototype.run = function() {
 }
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from MoveLogicControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MoveLogicControl.psgg
+
 /*
     S_0003
     タッチ場所のマップ情報を得る。

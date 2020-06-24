@@ -1,3 +1,603 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=KeyControl.xlsx
+guid=40370a41-bf75-4365-8ba9-9e0b99007bdd
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,n006,,n007,,n008,n009,n00a,n00b,n00c,n00d,n00e,,n00f,n010,,n011,n012,,n013,n014,,n015,n016,n017,n018,,n019,n01a,n01b
+stateid_list=,,,,s0001,s0002,s0003,,,,,,,,,,,,,s0004
+max_name_id=27
+max_state_id=4
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=basestate
+n006=nextstate
+n007=embed
+n008=data
+n009=data-cmt
+n00a=members
+n00b=vars
+n00c=init
+n00d=init-cmt
+n00e=init-ref
+n00f=update
+n010=update-cmt
+n011=wait
+n012=wait-cmt
+n013=post_wait
+n014=post_wait-cmt
+n015=branch
+n016=branch-cmt
+n017=brcond
+n018=nowait
+n019=!dir
+n01a=!pos
+n01b=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_DEBUG_ON_OFF
+s0004=S_WAIT_KEY
+
+
+[s0001]
+n002=S_START
+n006=S_WAIT_KEY
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=48,92
+n01b=100001
+
+[s0002]
+n002=S_END
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=625,81
+n01b=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_DEBUG_ON_OFF
+n006=S_WAIT_KEY
+n00c=@@@
+console.log("[[state]]");
+this.move_button('fade');
+this.move_button('shot');
+this.move_button('Q');
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=341,255
+n01b=100004
+
+[s0004]
+n001=(bitmap)
+n002=S_WAIT_KEY
+n011=G.key_down === ''
+n015=brif(S_DEBUG_ON_OFF);
+n016=?
+n017=G.key_down == 'D'
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=42,263
+n01b=100003
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/06/24 22:40:03
+; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
+psggfile=@@@
+KeyControl.psgg
+@@@
+xlsfile=@@@
+KeyControl.xlsx
+@@@
+guid=@@@
+40370a41-bf75-4365-8ba9-9e0b99007bdd
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+init,Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":"This is the root"}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":100,"y":100}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":48,"y":92}},{"Key":"S_END","Value":{"x":625,"y":81}},{"Key":"S_WAIT_KEY","Value":{"x":42,"y":263}},{"Key":"S_DEBUG_ON_OFF","Value":{"x":341,"y":255}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=0
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_use_custom_prefix=0
+option_omit_basestate_string=0
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+KeyControl.prototype.[[state]] = function (first) {
+    "use strict";
+    [[vars]]
+
+    <<<?init
+    if (first) {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) { return; }
+    >>>
+
+    [[post_wait]]
+
+    [[branch]]
+
+    <<<?nextstate
+    if (!this.hasnext()) {
+        this.setnext(this.[[nextstate]]);
+    }
+    >>>
+
+
+    if (this.hasnext()) {
+        <<<?nowait
+        this.setnowait();
+        >>>
+        this.gonext();
+    }
+};
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=KeyControl.psgg
+xls=KeyControl.xlsx
+gen_src=KeyControl.js
+
+
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+@@@
+
+
+
+
+lang=javascript
+framework=html5
+
+statemachie=KeyControl
+
+prefix=KeyControl
+xlsdir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+@@@
+
+
+gendir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+@@@
+
+
+genrdir=..
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+; This section has macro defines for converting.
+
+; commentline format  {%0} will be replaced to a comment.
+
+[macro]
+
+commentline=// {%0}
+
+@branch=@@@
+<<<?"{%0}"/^brifc{0,1}$/
+if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelseifc{0,1}$/
+else if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelse$/
+else { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^br_/
+this.{%0}( this.{%1} );
+>>>
+@@@
+
+
+
+
+[jpn]
+
+title=Javascript スタートキット 2018/9/29
+
+detail=@@@
+※サンプルプロジェクトを次のＵＲＬより入手可能。
+https://github.com/NNNIC/psgg-javascript-sample
+
+Javascript用のステートマシンを作成します。
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  以下のファイルを作成します。
+
+      KeyControl.pssg     --- エディタで次のエクセルファイルを開く。
+      KeyControl.xlsx     ---  ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　以下のファイルを作成します。
+
+      KeyControl.js       --- Excelファイルからの変換ソースコードを挿入。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+
+@@@
+
+
+
+
+[en]
+
+title=Javascript STARTER KIT 2018/9/29
+
+detail=@@@
+This dialog will create files for a state machine.
+
+* You may get the sample project from the below url.
+https://github.com/NNNIC/psgg-javascript-sample
+
+# Document Folder
+      This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  File:
+
+      KeyControl.pssg  --- The editor opens the below excel file.
+      KeyControl.xlsx  --- Excel File. the editor edits this file
+
+# Source Folder
+       This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　File:
+
+      KeyControl.js       -- The editor will convert from the excel file into this file.
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+; -----
+; 項目説明
+; -----
+
+[state]
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[thumbnail]
+jpn=@@@
+説明用のイメージを指定する。
+@@@
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[init]
+jpn=@@@
+初期化用処理を指定する。
+@@@
+en=@@@
+Specify a initial process.
+@@@
+
+[update]
+jpn=@@@
+更新処理を指定する。
+@@@
+en=@@@
+Specify a update process.
+@@@
+
+[wait]
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[post_wait]
+jpn=@@@
+'wait'後の処理を指定する。
+@@@
+en=@@@
+Specify the post process after 'wait'.
+@@@
+
+[branch]
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[nextstate]
+jpn=@@@
+次に実行するステートを指定する。
+@@@
+en=@@@
+Specify the next state to be executed.
+@@@
+
+[nowait]
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[!dir]
+jpn=@@@
+システムがステートのディレクトリ指定に使用。
+@@@
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[!uuid]
+jpn=@@@
+システムがステートのuuid指定に使用。
+@@@
+en=@@@
+System uses this for the uuid of the state.
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+init=
+branch-cmt=
+state-ref=
+wait=
+wait-cmt=
+embed=
+data=
+branch=
+!dir=
+post_wait-cmt=
+nowait=
+members=
+thumbnail=
+update-cmt=
+post_wait=
+state-cmt=
+!pos=
+!uuid=
+nextstate=
+state=
+S_=
+data-cmt=
+brcond=
+update=
+init-cmt=
+basestate=
+vars=
+C_=
+E_=
+init-ref=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+thumbnail=read_only,share,S.+
+gosubstate=read_only,exclusion,S0
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,exclusion,(S0)
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

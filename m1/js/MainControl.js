@@ -8,26 +8,12 @@ var MainControl = function () {
     this.nowait    = false;
 
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from MainControl.xlsx. 
-    this.m_bS_CREATE_PANELS = false;
+    //             psggConverterLib.dll converted from psgg-file:doc\MainControl.psgg
 
+    this.m_bS_CREATE_PANELS = false;
     this.bDone = false;
     this.bDone = false;
     this.m_S_GET_TOUCH_done = false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     this.m_limit_S_WAIT = 0;
     this.m_limit_S_WAIT1 = 0;
     this.m_limit_S_WAIT2 = 0;
@@ -116,7 +102,8 @@ MainControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from MainControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\MainControl.psgg
+
 /*
     S_CHECK_COMPLETION
 */

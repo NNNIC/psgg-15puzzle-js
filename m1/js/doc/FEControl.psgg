@@ -1,3 +1,955 @@
-﻿; PSGG Editor Shortcut file
-version=1.0
+﻿;PSGG Editor Backup File
+version=1.1
 file=FEControl.xlsx
+guid=7a5c8924-8543-4b9a-99b2-13aace9199e0
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n005,n006,,n007,,n008,n009,n00a,n00b,n00c,n00d,n00e,,n00f,n010,,n011,n012,,n013,n014,,n015,n016,n017,n018,,n019,n01a,n01b
+stateid_list=,,,,s0001,s0002,s0003,s0004,s0005,s0006,s0007,s0008,s0009,s000a,s000b,s000c,s000d,s000e,s000f,s0010,s0011
+max_name_id=27
+max_state_id=17
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=basestate
+n006=nextstate
+n007=embed
+n008=data
+n009=data-cmt
+n00a=members
+n00b=vars
+n00c=init
+n00d=init-cmt
+n00e=init-ref
+n00f=update
+n010=update-cmt
+n011=wait
+n012=wait-cmt
+n013=post_wait
+n014=post_wait-cmt
+n015=branch
+n016=branch-cmt
+n017=brcond
+n018=nowait
+n019=!dir
+n01a=!pos
+n01b=!uuid
+
+
+[id_state_dic]
+s0001=S_START
+s0002=S_END
+s0003=S_QUESTION1
+s0004=S_CREATE_BUTTON1
+s0005=S_RAYCAST
+s0006=S_FADE_ONOFF
+s0007=S_LOAD_SHOT
+s0008=S_LOAD_TEXTURE
+s0009=S_SHOT
+s000a=S_LOAD_Q
+s000b=S_CREATE_SHOTBUT1
+s000c=S_CREATE_SHOTBUT
+s000d=S_NEXT
+s000e=S_IS_CLICK1
+s000f=S_LOAD_NEXT
+s0010=S_CREATE_NEXTBUT
+s0011=E_SHOW_NEXT
+
+
+[s0001]
+n002=S_START
+n006=S_LOAD_TEXTURE
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=38,49
+n01b=100001
+
+[s0002]
+n001=(bitmap)
+n002=S_END
+n00c=console.log("END");
+n019=@@@
+/
+(100,100)
+This is the root
+@@@
+
+n01a=961,56
+n01b=100002
+
+[s0003]
+n001=(bitmap)
+n002=S_QUESTION1
+n003=出題
+n006=S_IS_CLICK1
+n00a=this.modai_num =0;
+n00c=@@@
+var n = this.modai_num++;
+show_mondai(n);
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1021,1066
+n01b=100029
+
+[s0004]
+n001=(bitmap)
+n002=S_CREATE_BUTTON1
+n006=S_LOAD_SHOT
+n008=fade
+n00a=this.box = null;
+n00c=@@@
+this.box = new THREE.Mesh(
+    new THREE.PlaneGeometry(80, 80),
+    new THREE.MeshBasicMaterial({map: this.texture})  // {map: texture}がキモ
+);
+
+this.box.name = "[[data]]";
+G._2d_scene.add(this.box);
+
+@@@
+
+n013=@@@
+this.box.position.set(50, G.height - 50 -100, 0);
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=228,143
+n01b=100018
+
+[s0005]
+n001=(bitmap)
+n002=S_RAYCAST
+n004=@@@
+https://ics.media/tutorial-three/raycast/
+@@@
+
+n00f=@@@
+// レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
+G.raycaster.setFromCamera(G.mouse, G._2d_camera);
+
+// その光線とぶつかったオブジェクトを得る
+const intersects = G.raycaster.intersectObjects(G._2d_scene.children);
+
+//if (intersects.length > 0){
+//    // ぶつかったオブジェクトに対してなんかする
+//   console.log("hit");
+//}
+//if (G.mouse_click) console.log("clicked!!");
+
+@@@
+
+n011=@@@
+!(intersects.length > 0 && G.mouse_click)
+@@@
+
+n013=@@@
+var button = intersects[0].object.name;
+console.log("Clicked Obj = " + button );
+@@@
+
+n015=@@@
+brifc(S_FADE_ONOFF);
+brelseifc(S_SHOT);
+brelseifc(S_QUESTION1);
+brelseifc(S_NEXT);
+brelse(S_IS_CLICK1);
+@@@
+
+n016=@@@
+?
+?
+?
+?
+?
+@@@
+
+n017=@@@
+button == "fade"
+button == "shot"
+button == "Q"
+button == "NEXT"
+?
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=797,545
+n01b=100019
+
+[s0006]
+n001=(bitmap)
+n002=S_FADE_ONOFF
+n006=S_IS_CLICK1
+n00a=this.bDone = false;
+n00b=@@@
+var fc  = G.fade_control;
+var fct = G.fadetxt_control;
+@@@
+
+n00c=@@@
+console.log("[[state]] start");
+fc.m_in_or_out = !fc.m_in_or_out;
+fct.m_in_or_out = !fct.m_in_or_out;
+this.bDone = false;
+fc.m_reqcb = () => {  G.fe_control.bDone = true;  console.log("done!!!")  };
+fct.m_reqcb=()=>{};
+@@@
+
+n011=!this.bDone
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1106,493
+n01b=100020
+
+[s0007]
+n001=(bitmap)
+n002=S_LOAD_SHOT
+n005=S_LOAD_TEXTURE
+n006=S_CREATE_SHOTBUT
+n008=shot.png
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=492,144
+n01b=100022
+
+[s0008]
+n001=(bitmap)
+n002=S_LOAD_TEXTURE
+n006=S_CREATE_BUTTON1
+n008=fade.png
+n00a=this.texture = null;
+n00c=@@@
+this.texture = null;
+console.log( "G.datapath=" + G.datapath);
+var self = this;
+G.loader.load( G.datapath + "[[data]]", function(texture) {
+    self.texture = texture;
+    console.log("loaded texture!");
+});
+@@@
+
+n011=this.texture==null
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=32,140
+n01b=100015
+
+[s0009]
+n001=(bitmap)
+n002=S_SHOT
+n003=問題用に現データを表示
+n006=S_IS_CLICK1
+n00c=@@@
+console.log(G.mapinfo);
+var s = "";
+for(var  i = 1; i<=16; i++)
+{
+    var n = G.mapinfo['n'+i].panel;
+    if (s !== "") s+=",";
+    s+= '"' + n + '"';
+}
+copyToClipboard(s);
+alert("clipboardへコピーしました\n" +   s.toString());
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1423,757
+n01b=100024
+
+[s000a]
+n001=(bitmap)
+n002=S_LOAD_Q
+n005=S_LOAD_TEXTURE
+n006=S_CREATE_SHOTBUT1
+n008=Q.png
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=883,134
+n01b=100025
+
+[s000b]
+n001=(bitmap)
+n002=S_CREATE_SHOTBUT1
+n005=S_CREATE_BUTTON1
+n006=S_LOAD_NEXT
+n008=Q
+n013=@@@
+this.box.position.set(50, G.height - 250 - 100, 0);
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1059,130
+n01b=100026
+
+[s000c]
+n001=(bitmap)
+n002=S_CREATE_SHOTBUT
+n005=S_CREATE_BUTTON1
+n006=S_LOAD_Q
+n008=shot
+n013=@@@
+this.box.position.set(50, G.height - 150-100, 0);
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=693,146
+n01b=100023
+
+[s000d]
+n001=(bitmap)
+n002=S_NEXT
+n006=S_IS_CLICK1
+n00a=this.next_cb = null;
+n00c=@@@
+if (this.next_cb!=null) this.next_cb();
+console.log("NEXT BUTTON CLICKED!!!");
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1432,1077
+n01b=100032
+
+[s000e]
+n001=(bitmap)
+n002=S_IS_CLICK1
+n006=S_RAYCAST
+n011=G.mouse_click===false
+n018=nowait
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=92,708
+n01b=100028
+
+[s000f]
+n001=(bitmap)
+n002=S_LOAD_NEXT
+n005=S_LOAD_TEXTURE
+n006=S_CREATE_NEXTBUT
+n008=NEXT.png
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1251,139
+n01b=100031
+
+[s0010]
+n001=(bitmap)
+n002=S_CREATE_NEXTBUT
+n006=S_IS_CLICK1
+n008=NEXT
+n00a=this.m_nextbutton = null;
+n00c=@@@
+this.box = new THREE.Mesh(
+            new THREE.PlaneGeometry(160, 80),
+            new THREE.MeshBasicMaterial({map: this.texture})  // {map: texture}がキモ
+);
+this.box.name = "[[data]]";
+G._2d_scene.add(this.box);
+
+@@@
+
+n013=@@@
+this.box.position.set(480, G.height - 570, 0);
+this.m_nextbutton = this.box;
+this.show_next(false);
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1465,127
+n01b=100030
+
+[s0011]
+n001=(bitmap)
+n002=E_SHOW_NEXT
+n007=@@@
+FEControl.prototype.show_next = function(b) {
+    this.m_nextbutton.visible = b;
+};
+@@@
+
+n019=@@@
+/
+(100,100)
+
+@@@
+
+n01a=1720,121
+n01b=100033
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/06/24 22:39:26
+; * pssgEditor version : 0.65.5617.0737256ae72d56e87335f7bfb8f8728597b6ec64
+psggfile=@@@
+FEControl.psgg
+@@@
+xlsfile=@@@
+FEControl.xlsx
+@@@
+guid=@@@
+7a5c8924-8543-4b9a-99b2-13aace9199e0
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+init,Initilized
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":"This is the root"}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":100,"y":100}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":38,"y":49}},{"Key":"S_END","Value":{"x":961,"y":56}},{"Key":"S_LOAD_TEXTURE","Value":{"x":32,"y":140}},{"Key":"S_CREATE_BUTTON1","Value":{"x":228,"y":143}},{"Key":"S_RAYCAST","Value":{"x":797,"y":545}},{"Key":"S_FADE_ONOFF","Value":{"x":1106,"y":493}},{"Key":"S_LOAD_SHOT","Value":{"x":492,"y":144}},{"Key":"S_CREATE_SHOTBUT","Value":{"x":693,"y":146}},{"Key":"S_SHOT","Value":{"x":1423,"y":757}},{"Key":"S_CREATE_SHOTBUT1","Value":{"x":1059,"y":130}},{"Key":"S_LOAD_Q","Value":{"x":883,"y":134}},{"Key":"S_IS_CLICK1","Value":{"x":92,"y":708}},{"Key":"S_QUESTION1","Value":{"x":1021,"y":1066}},{"Key":"S_LOAD_NEXT","Value":{"x":1251,"y":139}},{"Key":"S_CREATE_NEXTBUT","Value":{"x":1465,"y":127}},{"Key":"S_NEXT","Value":{"x":1432,"y":1077}},{"Key":"E_SHOW_NEXT","Value":{"x":1720,"y":121}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=0
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=0
+option_use_custom_prefix=0
+option_omit_basestate_string=1
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=4
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+/*
+    [[state]]
+    [[state-cmt]]
+*/
+<<<?state/^E_/
+
+[[embed]]
+
+eof>>>
+FEControl.prototype.[[state]] = function (first) {
+    "use strict";
+    [[vars]]
+
+    <<<?init
+    if (first) {
+        [[init]]
+    }
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if ([[wait]]) { return; }
+    >>>
+
+    [[post_wait]]
+
+    [[branch]]
+
+    <<<?nextstate
+    if (!this.hasnext()) {
+        this.setnext(this.[[nextstate]]);
+    }
+    >>>
+
+
+    if (this.hasnext()) {
+        <<<?nowait
+        this.setnowait();
+        >>>
+        this.gonext();
+    }
+};
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=FEControl.psgg
+xls=FEControl.xlsx
+gen_src=FEControl.js
+
+
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=helpweb.html
+
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git 0e5d1e482ea7edce6fd0b43d8572377598f3bfc6
+@@@
+
+
+
+
+
+lang=javascript
+framework=html5
+
+statemachie=FEControl
+
+prefix=FEControl
+xlsdir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+@@@
+
+
+
+gendir=@@@
+C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+@@@
+
+
+
+genrdir=..
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+; This section has macro defines for converting.
+
+; commentline format  {%0} will be replaced to a comment.
+
+
+[macro]
+
+commentline=// {%0}
+
+@branch=@@@
+<<<?"{%0}"/^brifc{0,1}$/
+if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelseifc{0,1}$/
+else if ([[brcond:{%N}]]) { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^brelse$/
+else { this.setnext( this.{%1} ); }
+>>>
+<<<?"{%0}"/^br_/
+this.{%0}( this.{%1} );
+>>>
+@@@
+
+
+#mems=[[members]]
+
+
+
+
+
+[jpn]
+
+title=Javascript スタートキット 2018/9/29
+
+detail=@@@
+※サンプルプロジェクトを次のＵＲＬより入手可能。
+https://github.com/NNNIC/psgg-javascript-sample
+
+Javascript用のステートマシンを作成します。
+
+# ドキュメント用フォルダ
+   ステート図ファイルとエディタ起動用ショートカットを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  以下のファイルを作成します。
+
+      FEControl.pssg     --- エディタで次のエクセルファイルを開く。
+      FEControl.xlsx     ---  ステート図格納用Excelファイル。エディタが編集。
+
+# ソース用フォルダ
+　エディタが生成ソースファイル、ユーザ実装ソースファイル、及び管理クラスファイルを格納
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　以下のファイルを作成します。
+
+      FEControl.js       --- Excelファイルからの変換ソースコードを挿入。
+
+注意 : 既に同名のファイルがある場合は生成されません。
+　　　 削除してから生成してください。
+
+
+@@@
+
+
+
+
+
+
+[en]
+
+title=Javascript STARTER KIT 2018/9/29
+
+detail=@@@
+This dialog will create files for a state machine.
+
+* You may get the sample project from the below url.
+https://github.com/NNNIC/psgg-javascript-sample
+
+# Document Folder
+      This folder will contain a state chart file and the shortcut of the editor.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js\doc
+
+  File:
+
+      FEControl.pssg  --- The editor opens the below excel file.
+      FEControl.xlsx  --- Excel File. the editor edits this file
+
+# Source Folder
+       This folder will contain a source file generated by the editor, a user implemetation source file, and a manager source file.
+
+      C:\Users\gea01\Documents\fifteen_puzzle\t1\js
+
+　File:
+
+      FEControl.js       -- The editor will convert from the excel file into this file.
+
+NOTE : If the same name files exists, the file will not be created.
+       Please delete the same name files ahead of the creation.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+; -----
+; 項目説明
+; -----
+
+[state]
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[thumbnail]
+jpn=@@@
+説明用のイメージを指定する。
+@@@
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[init]
+jpn=@@@
+初期化用処理を指定する。
+@@@
+en=@@@
+Specify a initial process.
+@@@
+
+[update]
+jpn=@@@
+更新処理を指定する。
+@@@
+en=@@@
+Specify a update process.
+@@@
+
+[wait]
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[post_wait]
+jpn=@@@
+'wait'後の処理を指定する。
+@@@
+en=@@@
+Specify the post process after 'wait'.
+@@@
+
+[branch]
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[nextstate]
+jpn=@@@
+次に実行するステートを指定する。
+@@@
+en=@@@
+Specify the next state to be executed.
+@@@
+
+[nowait]
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'nowait'等を指定する。
+同期待ち時には何も指定しない。
+@@@
+en=@@@
+Specify 'nowait' and so on if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[!dir]
+jpn=@@@
+システムがステートのディレクトリ指定に使用。
+@@@
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[!uuid]
+jpn=@@@
+システムがステートのuuid指定に使用。
+@@@
+en=@@@
+System uses this for the uuid of the state.
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+init=
+branch-cmt=
+state-ref=
+wait=
+wait-cmt=
+embed=
+data=
+branch=
+!dir=
+post_wait-cmt=
+nowait=
+members=
+thumbnail=
+update-cmt=
+post_wait=
+state-cmt=
+!pos=
+!uuid=
+nextstate=
+state=
+S_=
+data-cmt=
+brcond=
+update=
+init-cmt=
+basestate=
+vars=
+C_=
+E_=
+init-ref=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+thumbnail=read_only,share,S.+
+gosubstate=read_only,exclusion,S0
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,exclusion,(S0)
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+

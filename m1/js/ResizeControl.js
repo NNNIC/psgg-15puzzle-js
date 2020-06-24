@@ -8,7 +8,8 @@ var ResizeControl = function () {
     this.nowait    = false;
     
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from ResizeControl.xlsx. 
+    //             psggConverterLib.dll converted from psgg-file:doc\ResizeControl.psgg
+
     this.witdh  = 960; //現在の幅　　入力
     this.height = 640; //現在の高さ　入力
     this.fixwidth= 960; //修正幅    出力
@@ -19,7 +20,8 @@ var ResizeControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from ResizeControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\ResizeControl.psgg
+
 /*
     E_DEFINES
 */
@@ -123,7 +125,8 @@ ResizeControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from ResizeControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\ResizeControl.psgg
+
 /*
     S_CHANGE_HEIGHT
     高さを修正する

@@ -8,25 +8,20 @@ var CreatePanelsControl = function () {
     this.nowait    = false;
     
     // [SYN-G-GEN OUTPUT START]  indent(4) $/^S_./->#mems$
-//  psggConverterLib.dll converted from CreatePanelsControl.xlsx. 
-    this.box = null;
-    this.box = null;
-    this.box = null;
-    this.box = null;
+    //             psggConverterLib.dll converted from psgg-file:doc\CreatePanelsControl.psgg
 
+    this.box = null;
+    this.box = null;
+    this.box = null;
+    this.box = null;
     this.item = null;
     this.I = 0;
-
-
     this.texture = null;
     this.texture = null;
     this.texture = null;
     this.texture = null;
     this.itemdata = [];
-
-
     this.touchtex=null;
-
     this.m_reqcb = null;
 
 
@@ -34,7 +29,8 @@ var CreatePanelsControl = function () {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^E_./$
-//  psggConverterLib.dll converted from CreatePanelsControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\CreatePanelsControl.psgg
+
 
 
 // [SYN-G-GEN OUTPUT END]
@@ -132,7 +128,8 @@ CreatePanelsControl.prototype.br_no = function (st) {
 };
 
 // [SYN-G-GEN OUTPUT START]  indent(0) $/^S_./$
-//  psggConverterLib.dll converted from CreatePanelsControl.xlsx. 
+//             psggConverterLib.dll converted from psgg-file:doc\CreatePanelsControl.psgg
+
 /*
     S_CB
 */
